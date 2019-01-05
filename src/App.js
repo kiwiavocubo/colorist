@@ -1,26 +1,35 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
+import { BrowserRouter, Route, Switch} from "react-router-dom";
+import Navigation from './components/Navigation';
+import Home from "./components/Home";
+import Contact from "./components/Contact";
+import Black from "./components/Black";
+import White from "./components/White";
+import Blue from "./components/Blue";
+import Red from "./components/Red";
 
 class App extends Component {
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
+       <BrowserRouter>
+      <div>
+      <Navigation />
+      <Switch>
+      <Route path="/" component={Home} exact/>
+      <Route path="/black" component={Black} />
+      <Route path="/blue" component={Blue} />
+      <Route path="/white" component={White} />
+      <Route path="/red" component={Red} />     
+      <Route path="/contact" component={Contact} />
+      <Route component={Error}/>
+      </Switch>
+      <div className="footer">
+      @copyright Qianwen Hu
       </div>
+      </div>
+      </BrowserRouter>
+      
     );
   }
 }
